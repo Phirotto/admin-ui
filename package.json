@@ -1,0 +1,33 @@
+{
+  "name": "admin-app",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "dotenv -- vite",
+    "build": "tsc && vite build"
+  },
+  "dependencies": {
+    "@openzeppelin/merkle-tree": "^1.0.5",
+    "antd": "^5.13.2",
+    "bignumber.js": "^9.1.2",
+    "connectkit": "1.6.0",
+    "papaparse": "^5.4.1",
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-router": "^6.21.3",
+    "react-router-dom": "^6.21.3",
+    "viem": "^1.0.0",
+    "wagmi": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/bignumber.js": "^5.0.0",
+    "@types/papaparse": "^5.3.14",
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.1.0",
+    "dotenv-cli": "^7.3.0",
+    "postcss": "^8.4.33",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.3.3",
+    "vite": "^3.1.0"
+  }
+}

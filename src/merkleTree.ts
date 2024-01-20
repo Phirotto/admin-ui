@@ -10,7 +10,7 @@ type Output = {
 };
 
 export function merkleTree(data: Input): Output {
-  const decimalsKoef = BigNumber(10).pow(6);
+  const decimalsKoef = BigNumber(10).pow(18);
   const dataWithDecimals = data.map(({ address, amount }) => ({
     address,
     amount: BigNumber(amount).multipliedBy(decimalsKoef),

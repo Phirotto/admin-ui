@@ -55,21 +55,23 @@ export function useDeployWhitelist(): UseDeployWhitelistResult {
         message: "Error rised during whitelist deployment",
       });
     }
-
+  }, [error]);
+  useEffect(() => {
     if (txError) {
       notification.error({
         message: "Error raised during tx awating",
         description: `${txError.name}: ${txError.message}`,
       });
     }
-
+  }, [txError]);
+  useEffect(() => {
     if (txData?.contractAddress) {
       notification.success({
         message: "Whitelist contract succesfully deployed",
         description: `Address: ${txData.contractAddress}`,
       });
     }
-  }, [error, txError]);
+  }, [txData]);
 
   return {
     isSending: isLoading,

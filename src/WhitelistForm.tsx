@@ -13,6 +13,7 @@ import { Download } from "./Download";
 import { merkleTree } from "./merkleTree";
 import { isAddress } from "viem";
 import { useDeployWhitelist } from "./hooks/useDeployWhitelist";
+import { useNavigate } from "react-router";
 
 type WhitelistEntry = {
   address: string;
@@ -25,6 +26,8 @@ export function WhitelistForm() {
   const [calculatedResult, updateCalculatedResult] = useState<ReturnType<
     typeof merkleTree
   > | null>(null);
+
+  const navigate = useNavigate();
 
   const { deploy, address, isSuccess, isSending, isWaiting } =
     useDeployWhitelist();
@@ -129,8 +132,13 @@ export function WhitelistForm() {
               <Typography.Text strong>
                 Deployment in progress...
               </Typography.Text>
-            ) : isSuccess ? (
-              <Typography.Text strong>Deployed to {address}</Typography.Text>
+            ) : isSuccess && address ? (
+              <Button
+                type="link"
+                onClick={() => navigate(`/vault?whitelistAddr=${address}`)}
+              >
+                Create vault with whitelist
+              </Button>
             ) : (
               <Button onClick={() => deploy(calculatedResult.root)}>
                 Deploy

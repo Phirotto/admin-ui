@@ -5,11 +5,16 @@ import { Layout } from "./Layout";
 import { WhitelistForm } from "./WhitelistForm";
 import { Navigate, RouterProvider, createHashRouter } from "react-router-dom";
 import { App as AntdApp } from "antd";
+import { CreateVaultForm } from "./CreateVaultForm";
 
 const router = createHashRouter([
   {
     path: "/whitelist",
     element: <WhitelistForm />,
+  },
+  {
+    path: "/vault",
+    element: <CreateVaultForm />,
   },
   {
     path: "*",

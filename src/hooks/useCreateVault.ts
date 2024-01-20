@@ -67,7 +67,7 @@ export function useCreateVault(): UseCreateVaultResult {
     address: txData?.logs[0].address as `0x${string}`,
     create: (name, amount, admin, whitelist) =>
       write({
-        args: [name, whitelist, admin, toHex(amount)],
+        args: [name, whitelist, admin, amount],
       }),
   };
 }

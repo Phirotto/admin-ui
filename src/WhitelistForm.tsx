@@ -12,6 +12,7 @@ import Papa from "papaparse";
 import { Download } from "./Download";
 import { merkleTree } from "./merkleTree";
 import { isAddress } from "viem";
+import { useDeployWhitelist } from "./hooks/useDeployWhitelist";
 
 type WhitelistEntry = {
   address: string;
@@ -24,6 +25,9 @@ export function WhitelistForm() {
   const [calculatedResult, updateCalculatedResult] = useState<ReturnType<
     typeof merkleTree
   > | null>(null);
+
+  const { deploy, address, isSuccess, isSending, isWaiting } =
+    useDeployWhitelist();
 
   const inputFile = useRef<HTMLInputElement>(null);
 
@@ -121,7 +125,17 @@ export function WhitelistForm() {
 
         {calculatedResult != null ? (
           <Space>
-            <Button>Deploy</Button>
+            {isSending || isWaiting ? (
+              <Typography.Text strong>
+                Deployment in progress...
+              </Typography.Text>
+            ) : isSuccess ? (
+              <Typography.Text strong>Deployed to {address}</Typography.Text>
+            ) : (
+              <Button onClick={() => deploy(calculatedResult.root)}>
+                Deploy
+              </Button>
+            )}
             <Download
               content={
                 "address,amount,proof\n" +

@@ -4,6 +4,7 @@ import { config } from "./wagmi";
 import { Layout } from "./Layout";
 import { WhitelistForm } from "./WhitelistForm";
 import { Navigate, RouterProvider, createHashRouter } from "react-router-dom";
+import { App as AntdApp } from "antd";
 
 const router = createHashRouter([
   {
@@ -20,9 +21,11 @@ function App() {
   return (
     <WagmiConfig config={config}>
       <ConnectKitProvider>
-        <Layout>
-          <RouterProvider router={router} />
-        </Layout>
+        <AntdApp>
+          <Layout>
+            <RouterProvider router={router} />
+          </Layout>
+        </AntdApp>
       </ConnectKitProvider>
     </WagmiConfig>
   );

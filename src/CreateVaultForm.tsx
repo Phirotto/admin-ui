@@ -15,7 +15,7 @@ type VaultParams = {
 
 export function CreateVaultForm() {
   const [params] = useSearchParams();
-  const { address } = useAccount();
+  const { address, isConnected } = useAccount();
   const { create, isSending, isWaiting, isSuccess } = useCreateVault();
 
   const [vault, setVault] = useState<Partial<VaultParams>>({
@@ -90,7 +90,8 @@ export function CreateVaultForm() {
               !vault.admin ||
               !vault.whitelist ||
               !isAddress(vault.admin) ||
-              !isAddress(vault.whitelist)
+              !isAddress(vault.whitelist) ||
+              !isConnected
             }
             onClick={() =>
               create(

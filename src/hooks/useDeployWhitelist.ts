@@ -4,17 +4,17 @@ import {
   useMutation,
   useWaitForTransaction,
 } from "wagmi";
-import whitelistArtifact from "../../abi/whitelist.json";
 import { App } from "antd";
 import { useEffect } from "react";
 import { optimismSepolia } from "viem/chains";
+import { WHITELIST_ABI, WHITELIST_BYTECODE } from "../constants/whitelist";
 
 async function deploy(connector: Connector, root: string) {
   const viem = await connector.getWalletClient();
 
   return await viem.deployContract({
-    abi: whitelistArtifact.abi,
-    bytecode: whitelistArtifact.bytecode as `0x${string}`,
+    abi: WHITELIST_ABI,
+    bytecode: WHITELIST_BYTECODE as `0x${string}`,
     chain: optimismSepolia,
     args: [root],
   });

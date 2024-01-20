@@ -1,8 +1,8 @@
 import { useContractWrite, useWaitForTransaction } from "wagmi";
-import factory from "../../abi/factory.json";
 import { App } from "antd";
 import { toHex } from "viem";
 import { useEffect } from "react";
+import { FACTORY_ABI } from "../constants/factory";
 
 type UseCreateVaultResult = {
   isSending: boolean;
@@ -22,7 +22,7 @@ export function useCreateVault(): UseCreateVaultResult {
   const { notification } = App.useApp();
 
   const { data, isLoading, error, write } = useContractWrite({
-    abi: factory.abi,
+    abi: FACTORY_ABI,
     address: import.meta.env.VITE_FACTORY_ADDRESS,
     functionName: "deployVault",
   });

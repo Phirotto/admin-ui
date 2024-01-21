@@ -17,7 +17,7 @@ export function merkleTree(data: Input): Output {
   }));
 
   const tree = StandardMerkleTree.of(
-    dataWithDecimals.map((d) => [d.address, d.amount.toString()]),
+    dataWithDecimals.map((d) => [d.address, d.amount.toFixed()]),
     ["address", "uint256"]
   );
 

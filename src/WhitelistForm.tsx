@@ -179,7 +179,7 @@ export function WhitelistForm() {
               disabled={isImported}
             />
             <InputNumber
-              value={BigNumber(amount || 0).toString()}
+              value={BigNumber(amount || 0).toFixed()}
               addonAfter="$"
               onChange={(e) => changeAmount(e || "0", i)}
               min="0"

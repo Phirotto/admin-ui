@@ -98,7 +98,7 @@ export function CreateVaultForm() {
                 vault.name!,
                 BigNumber(vault.requestedAmount!)
                   .multipliedBy(BigNumber(10).pow(18))
-                  .toString(),
+                  .toFixed(),
                 vault.admin!,
                 vault.whitelist!
               )
